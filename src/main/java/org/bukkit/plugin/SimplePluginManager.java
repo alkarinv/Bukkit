@@ -18,7 +18,6 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.PluginCommandYamlParser;
@@ -31,8 +30,6 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.util.FileUtil;
-
-import com.google.common.collect.ImmutableSet;
 
 /**
  * Handles all plugin management from the Server
@@ -494,7 +491,7 @@ public final class SimplePluginManager implements PluginManager {
                 if (plugin instanceof PluginExceptionHandler){
                 	try{
                     	((PluginExceptionHandler)plugin).uncaughtException(ex);
-                	} catch (Exception e){
+                	} catch (Throwable e){
                 		/* *sigh, really you couldnt even handle your own bad exception?
                 		 * do nothing */
                 	}
